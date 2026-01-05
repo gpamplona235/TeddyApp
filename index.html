@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teddy - Foco Absoluto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ed8432;
+            --black: #0f172a;
+            --gray: #64748b;
+            --bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--black);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR CORRIGIDA --- */
+        nav {
+            display: flex;
+            justify-content: space-between; /* Logo na ponta, Resto na outra */
+            align-items: center;
+            padding: 24px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        /* Agrupa links e botão para ficarem juntos na direita */
+        .nav-right-group {
+            display: flex;
+            align-items: center;
+            gap: 40px; /* Espaço entre os links e o botão Entrar */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--black);
+            color: white;
+            padding: 12px 24px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 0.9rem;
+            /* SEM BORDER RADIUS */
+            transition: opacity 0.2s;
+        }
+
+        .nav-cta:hover {
+            opacity: 0.8;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            padding: 80px 5% 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            letter-spacing: -2.5px;
+            margin-bottom: 24px;
+            color: var(--black);
+            word-wrap: break-word; 
+        }
+        
+        .typing-cursor {
+            display: inline-block;
+            width: 4px;
+            height: 0.8em;
+            background-color: var(--primary);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        .cta-big {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 16px 48px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            /* SEM BORDER RADIUS */
+            margin-bottom: 80px;
+            transition: transform 0.2s;
+        }
+
+        .cta-big:hover {
+            transform: scale(1.02);
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 100%;
+            display: block;
+            border: 4px solid var(--black);
+            box-shadow: 12px 12px 0px var(--black);
+        }
+
+        /* --- FEATURES --- */
+        .features {
+            padding: 120px 5%;
+            background: #f8fafc;
+            margin-top: 100px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            /* SEM BORDER RADIUS */
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--black);
+            transform: translateY(-5px);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            background: #fff7ed;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            /* SEM BORDER RADIUS */
+            border: 1px solid rgba(237, 132, 50, 0.2);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-color);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none; 
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .hero-image {
+                box-shadow: 6px 6px 0px var(--black);
+                border-width: 2px;
+            }
+            .features {
+                padding: 60px 5%;
+            }
+            .feature-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <!-- LADO ESQUERDO -->
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-paw"></i> TEDDY
+        </a>
+
+        <!-- LADO DIREITO (LINKS + BOTÃO) -->
+        <div class="nav-right-group">
+            <div class="nav-links">
+                <a href="#features">Funcionalidades</a>
+                <a href="changelog.html">Novidades</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <a href="https://seu-usuario.github.io/teddy-pomo-app" class="nav-cta">ENTRAR</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>
+            O fim da <span id="typing-text" style="color: var(--primary);">procrastinação</span><span class="typing-cursor">&nbsp;</span>
+        </h1>
+        
+        <p class="subtitle">
+            Estude de forma inteligente com Pomodoro, Flashcards e Análise de Desempenho. Tudo em um só lugar.
+        </p>
+        <a href="https://seu-usuario.github.io/teddy-pomo-app" class="cta-big">COMEÇAR AGORA</a>
+        
+        <div class="hero-image-container">
+            <img src="app_print.png" alt="Interface do App" class="hero-image">
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <span class="section-tag">Funcionalidades</span>
+                <h2 class="section-title">Tudo o que você precisa para ser aprovado.</h2>
+            </div>
+            
+            <div class="grid">
+                <!-- Cards (Tudo quadrado) -->
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-stopwatch"></i></div>
+                    <h3 class="feature-title">Cronômetro Pomodoro</h3>
+                    <p class="feature-desc">Foco total com timer integrado. Personalize tempos de foco e pausas, com histórico automático de sessões.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3 class="feature-title">Flashcards Inteligentes</h3>
+                    <p class="feature-desc">Crie e revise cartões de estudo. O sistema ajuda você a memorizar o conteúdo difícil através da repetição.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-chart-simple"></i></div>
+                    <h3 class="feature-title">Estatísticas Detalhadas</h3>
+                    <p class="feature-desc">Gráficos de desempenho, dias de ofensiva e horas estudadas. Saiba exatamente onde você está evoluindo.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-regular fa-calendar-check"></i></div>
+                    <h3 class="feature-title">Cronograma de Estudos</h3>
+                    <p class="feature-desc">Organize sua semana. Defina metas diárias e visualize seu progresso matéria por matéria no edital.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-calculator"></i></div>
+                    <h3 class="feature-title">Simulador de Notas</h3>
+                    <p class="feature-desc">Registre seus acertos em simulados e acompanhe sua porcentagem líquida para prever sua nota final.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fa-solid fa-moon"></i></div>
+                    <h3 class="feature-title">Modo Escuro & Claro</h3>
+                    <p class="feature-desc">Interface adaptável para não cansar sua vista, seja estudando de dia ou virando a noite.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Teddy. Desenvolvido para estudantes de alto rendimento.</p>
+    </footer>
+
+    <script>
+        const words = ["procrastinação.", "desorganização.", "falta de foco.", "reprovação."];
+        let i = 0;
+        let timer;
+
+        function typingEffect() {
+            const word = words[i].split("");
+            const loopTyping = function() {
+                if (word.length > 0) {
+                    document.getElementById('typing-text').innerHTML += word.shift();
+                } else {
+                    setTimeout(deletingEffect, 2000); 
+                    return false;
+                }
+                timer = setTimeout(loopTyping, 100); 
+            };
+            loopTyping();
+        }
+
+        function deletingEffect() {
+            const word = document.getElementById('typing-text').innerHTML.split("");
+            const loopDeleting = function() {
+                if (word.length > 0) {
+                    word.pop();
+                    document.getElementById('typing-text').innerHTML = word.join("");
+                } else {
+                    if (words.length > (i + 1)) {
+                        i++;
+                    } else {
+                        i = 0;
+                    }
+                    typingEffect();
+                    return false;
+                }
+                timer = setTimeout(loopDeleting, 50); 
+            };
+            loopDeleting();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('typing-text').innerHTML = ""; 
+            typingEffect();
+        });
+    </script>
+</body>
+</html>
